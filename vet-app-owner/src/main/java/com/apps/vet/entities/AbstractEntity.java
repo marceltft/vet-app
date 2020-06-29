@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -13,16 +14,14 @@ public abstract class AbstractEntity {
 
     
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(final UUID id) {
+    public void setId(final int id) {
         this.id = id;
     }
     

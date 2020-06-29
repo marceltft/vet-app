@@ -2,10 +2,9 @@ package com.apps.vet.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,10 +14,10 @@ public class Animal extends AbstractEntity {
     private String species;
     private String breed;
     private String sex;
+    @Column(name = "picture_path")
     private String picture;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Owner owner;
 
     private Date birthday;

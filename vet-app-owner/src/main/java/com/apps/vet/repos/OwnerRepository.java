@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.apps.vet.entities.Owner;
 
 @Repository
-public interface OwnerRepository extends JpaRepository<Owner, UUID>{
+public interface OwnerRepository extends JpaRepository<Owner, Integer>{
 
     
     

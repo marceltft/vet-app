@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class VetAppApplication {
+public class ClientApplication {
 
     
     @RequestMapping("/")
@@ -15,7 +15,7 @@ public class VetAppApplication {
       return "Hello Docker World";
     }
 	public static void main(String[] args) {
-		SpringApplication.run(VetAppApplication.class, args);
+		SpringApplication.run(ClientApplication.class, args);
 	}
 
 }
