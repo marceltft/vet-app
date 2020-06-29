@@ -13,7 +13,7 @@ public class VetServiceImpl implements VetService {
     private VeterinaryRepository repository;
 
     @Override
-    public UUID saveVeterinary(Veterinary vet) {
+    public Integer saveVeterinary(Veterinary vet) {
         
         repository.save(vet);
         return vet.getId();
@@ -31,7 +31,7 @@ public class VetServiceImpl implements VetService {
     }
 
     @Override
-    public Veterinary getVeterinaryById(UUID id) {
+    public Veterinary getVeterinaryById(Integer id) {
         
         return repository.findById(id).get();
     }

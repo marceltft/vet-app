@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.apps.vet.entities.Veterinary;
 
 @Repository
-public interface VeterinaryRepository extends JpaRepository<Veterinary, UUID> {
+public interface VeterinaryRepository extends JpaRepository<Veterinary, Integer> {
 
     public Veterinary findByName(String name);
 }

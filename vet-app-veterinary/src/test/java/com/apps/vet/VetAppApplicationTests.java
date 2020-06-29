@@ -1,61 +1,60 @@
 package com.apps.vet;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.apps.vet.entities.Role;
 import com.apps.vet.entities.Veterinary;
-import com.apps.vet.repos.RoleRepository;
 import com.apps.vet.repos.VeterinaryRepository;
 
 @SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
 class VetAppApplicationTests {
-    private UUID TEMP_ID = UUID.fromString("8ec9d4a2-58ef-4a70-9b55-0626d6f75dff");
-    
+
     @Autowired
     private VeterinaryRepository repository;
+    private int tempId = 9999;
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Test
+    //@Test
+    @Order(1)
     void testCreateVet() {
 
         Veterinary vet = new Veterinary();
-        
+        vet.setId(tempId);
         vet.setName("Natasha Nogueira");
         vet.setPhone("552199999999");
         vet.setEmail("vet@vet.com");
-        vet.setSpecialty("Cirurgia");
         vet.setPassword("aaaaa");
         vet.setSocialId("123");
-        
-        Role role = roleRepository.findByRole("Administrator");
-        Set<Role> roles = new HashSet<>();
-        roles.add(role);
-        vet.setRoles(roles);
+
         repository.save(vet);
-        //assertEquals("Id nao eh null", vet.getId().equals(TEMP_ID));
+
     }
 
-    @Test
-    void readVet() {
-       
-        Veterinary vet = repository.findByName("Natasha Nogueira");
-        System.out.println(vet.getEmail());
-        System.out.println(vet.getId());
-        
-    }
 
+   // @Test
+    @Order(30)
+    void testRemoveVet() {
+
+        Veterinary veterinary = repository.findById(tempId).get();
+        repository.delete(veterinary);
+        assertFalse(repository.existsById(tempId), "User was removed");
+
+    }
+    
     //@Test
-    //@Order(3)
-    void deleteVet() {
-        repository.deleteById(TEMP_ID);
+    @Order(2)
+    void testReadVet() {
+        Veterinary vet = repository.findById(tempId).get();
+        //Veterinary vet = repository.findByName("Natasha Nogueira");
+        assertEquals("Id nao eh null", vet.getId() == tempId);
+
     }
 
 }

@@ -7,13 +7,13 @@ import com.apps.vet.entities.Veterinary;
 
 public interface VetService {
     
-    UUID saveVeterinary(Veterinary veterinary);
+    Integer saveVeterinary(Veterinary veterinary);
 
     Veterinary updateVeterinary(Veterinary veterinary);
 
     void deleteVeterinary(Veterinary veterinary);
 
-    Veterinary getVeterinaryById(UUID id);
+    Veterinary getVeterinaryById(Integer id);
 
     List<Veterinary> getAllVeterinarys();
 
