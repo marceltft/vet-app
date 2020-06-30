@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.apps.vet</groupId>
-	<artifactId>vet-app-vets-user</artifactId>
+	<artifactId>vet-app-aplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>vet-app-vets-user</name>
-	<description>Vet App User Backend</description>
+	<name>vet-app-vets-aplication</name>
+	<description>Vet App Aplication Backend</description>
 
 	<properties>
 		<java.version>1.8</java.version>
