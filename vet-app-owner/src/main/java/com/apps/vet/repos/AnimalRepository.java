@@ -8,5 +8,6 @@ import com.apps.vet.entities.Animal;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Integer>{
 
+    Animal findByName(String name);
     
 }
